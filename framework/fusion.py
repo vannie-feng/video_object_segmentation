@@ -5,12 +5,12 @@ import cv2
 import PIL.Image as Image
 import os
 
-blackimg=Image.open('black.png')
-blackimg=blackimg.convert('RGBA')
+#blackimg=Image.open('black.png')
+#blackimg=blackimg.convert('RGBA')
 def transparent (img):
     img=img.convert('RGBA')
     L,H = img.size
-    color_0=(0,0,0,0)
+    color_0=(0,0,0,255)
     for h in range(H):
         for l in range(L):
             a=img.getpixel((l,h))
@@ -25,8 +25,8 @@ def fusion(forimg,backimg,alpha):
     imgb=backimg.convert('RGBA')
     L,H = imgf.size
     lb,hb=backimg.size
-    #color_0=(0,0,0,0)
-    color_0=blackimg.getpixel((0,0))
+    color_0=(0,0,0,255)
+    #color_0=blackimg.getpixel((0,0))
     for h in range(H):
         for l in range(L):
             if(mask.getpixel((l,h))==color_0):
